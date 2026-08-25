@@ -1,0 +1,3317 @@
+<title>Bespoke Fashion — Strategie Q4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap">
+
+<style>
+/* ── Tokens ── */
+:root {
+  --bg:           #F5F0E8;
+  --bg-surface:   #EDE6D9;
+  --bg-card:      #FFFFFF;
+  --txt:          #1A1612;
+  --txt-2:        #4A3F33;
+  --txt-3:        #9A8D7C;
+  --accent:       #2D5547;
+  --accent-sub:   rgba(45,85,71,.08);
+  --accent-data:  #B8874A;
+  --border:       #D8D0C4;
+  --border-l:     #E8E2D8;
+  --cl:  #3A7A56; --cl-bg: rgba(58,122,86,.09);
+  --cm:  #9A7236; --cm-bg: rgba(154,114,54,.09);
+  --ch:  #8B4040; --ch-bg: rgba(139,64,64,.09);
+  --r:   3px;
+  --rl:  6px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:          #0D1B16;
+    --bg-surface:  #132219;
+    --bg-card:     #1A2E23;
+    --txt:         #E5EDE9;
+    --txt-2:       #8AB5A4;
+    --txt-3:       #526A60;
+    --accent:      #7ABDA0;
+    --accent-sub:  rgba(122,189,160,.12);
+    --accent-data: #D4A870;
+    --border:      #243D32;
+    --border-l:    #1C3028;
+    --cl:  #5AAA7A; --cl-bg: rgba(90,170,122,.15);
+    --cm:  #C09040; --cm-bg: rgba(192,144,64,.15);
+    --ch:  #C06060; --ch-bg: rgba(192,96,96,.15);
+  }
+}
+:root[data-theme="dark"] {
+  --bg:          #0D1B16;
+  --bg-surface:  #132219;
+  --bg-card:     #1A2E23;
+  --txt:         #E5EDE9;
+  --txt-2:       #8AB5A4;
+  --txt-3:       #526A60;
+  --accent:      #7ABDA0;
+  --accent-sub:  rgba(122,189,160,.12);
+  --accent-data: #D4A870;
+  --border:      #243D32;
+  --border-l:    #1C3028;
+  --cl:  #5AAA7A; --cl-bg: rgba(90,170,122,.15);
+  --cm:  #C09040; --cm-bg: rgba(192,144,64,.15);
+  --ch:  #C06060; --ch-bg: rgba(192,96,96,.15);
+}
+
+/* ── Reset ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--txt);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Header ── */
+.hd {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 24px 52px;
+  border-bottom: none;
+  background: var(--hd-bg, #1C3A2F);
+}
+.hd-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.hd-logo {
+  height: 56px;
+  width: auto;
+}
+.hd-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.55);
+  border-left: 1px solid rgba(255,255,255,.15);
+  padding-left: 20px;
+}
+.hd-meta {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.4);
+}
+
+/* ── Tabs ── */
+.tab-nav {
+  display: flex;
+  padding: 0 52px;
+  border-bottom: 1px solid var(--border-l);
+  overflow-x: auto;
+  gap: 0;
+  background: var(--bg-surface);
+}
+.tab-btn {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: .03em;
+  color: var(--txt-3);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 16px 0;
+  margin-right: 32px;
+  cursor: pointer;
+  transition: color .18s, border-color .18s;
+  white-space: nowrap;
+  flex-shrink: 0;
+  text-transform: uppercase;
+}
+.tab-btn:hover { color: var(--txt-2); }
+.tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+.tab-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* ── Content ── */
+.tab-content { display: none; padding: 52px; max-width: 1200px; margin: 0 auto; }
+.tab-content.active { display: block; }
+
+/* ── Section ── */
+.sec { margin-bottom: 64px; }
+.sec-eyebrow {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: .01em;
+  text-transform: none;
+  color: var(--txt);
+  display: block;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-l);
+}
+.sec-h {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.1;
+  text-wrap: balance;
+  letter-spacing: -.01em;
+  margin-bottom: 28px;
+}
+.sec-h em { font-style: italic; color: var(--accent); }
+.sub-h {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--txt-3);
+  margin-bottom: 14px;
+}
+.sp { height: 28px; }
+
+/* ──────────────────────────────────────────────
+   OVERVIEW TAB COMPONENTS
+────────────────────────────────────────────── */
+
+/* Concept cards */
+.concept-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--rl);
+  overflow: hidden;
+}
+.concept-card {
+  background: var(--bg-card);
+  padding: 22px 20px 20px;
+}
+.concept-platform {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--txt-3);
+  display: block;
+  margin-bottom: 6px;
+}
+.concept-action {
+  font-size: 13px;
+  color: var(--txt-2);
+  line-height: 1.45;
+}
+.concept-action strong { color: var(--accent); font-weight: 600; }
+
+/* Funnel table stage labels */
+.stage { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .07em; padding: 2px 6px; border-radius: 2px; font-weight: 500; }
+.s-aw  { background: rgba(59,90,80,.12);  color: var(--accent-data); }
+.s-co  { background: var(--cm-bg);        color: var(--cm); }
+.s-in  { background: var(--accent-sub);   color: var(--accent); }
+.s-cv  { background: var(--ch-bg);        color: var(--ch); }
+.s-rt  { background: var(--cl-bg);        color: var(--cl); }
+.s-ad  { background: var(--bg-surface);   color: var(--txt-3); }
+
+/* Persona cards */
+.persona-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.persona-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--rl);
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+.persona-letter {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 80px;
+  font-weight: 300;
+  color: var(--border-l);
+  position: absolute;
+  top: 8px; right: 14px;
+  line-height: 1;
+  letter-spacing: -.03em;
+  pointer-events: none;
+  user-select: none;
+}
+.persona-jtbd {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 21px;
+  color: var(--accent);
+  margin-bottom: 6px;
+  max-width: 82%;
+  text-wrap: balance;
+  line-height: 1.2;
+}
+.persona-demo {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--txt-3);
+  margin-bottom: 12px;
+}
+.persona-desc { font-size: 13.5px; color: var(--txt-2); line-height: 1.55; }
+.persona-msg {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--txt-2);
+  font-style: italic;
+  border-left: 2px solid var(--accent);
+  padding-left: 10px;
+  line-height: 1.45;
+}
+
+/* Content pillars */
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+.pillar-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--rl);
+  padding: 16px;
+}
+.pillar-name {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 8px;
+}
+.pillar-ex {
+  font-size: 12.5px;
+  color: var(--txt-2);
+  line-height: 1.5;
+  font-style: italic;
+}
+
+/* Content note */
+.content-note {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent-data);
+  border-radius: 0 var(--rl) var(--rl) 0;
+  padding: 16px 18px;
+  font-size: 13.5px;
+  color: var(--txt-2);
+  line-height: 1.6;
+  margin-top: 14px;
+}
+.content-note strong { color: var(--txt); }
+
+/* Remarketing ladder */
+.rm-ladder {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--rl);
+  overflow: hidden;
+}
+.rm-step {
+  display: grid;
+  grid-template-columns: 1fr 24px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-l);
+  border-left: 3px solid transparent;
+}
+.rm-step:last-child { border-bottom: none; }
+.rm-step[data-lvl="1"] { border-left-color: rgba(139,104,64,.20); }
+.rm-step[data-lvl="2"] { border-left-color: rgba(139,104,64,.45); }
+.rm-step[data-lvl="3"] { border-left-color: rgba(139,104,64,.72); }
+.rm-step[data-lvl="4"] { border-left-color: var(--accent); }
+.rm-trigger { font-size: 13px; color: var(--txt-2); line-height: 1.4; }
+.rm-trigger strong { color: var(--txt); }
+.rm-arr { color: var(--border); font-size: 18px; text-align: center; }
+.rm-action { font-size: 13px; color: var(--txt-2); line-height: 1.4; font-style: italic; }
+.rm-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .07em;
+  padding: 2px 7px;
+  border-radius: 2px;
+  white-space: nowrap;
+  background: var(--accent-sub);
+  color: var(--accent);
+}
+
+/* LinkedIn posts */
+.li-intro { font-size: 13.5px; color: var(--txt-2); line-height: 1.6; margin-bottom: 16px; max-width: 600px; }
+.li-posts { display: flex; flex-direction: column; gap: 8px; }
+.li-post {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 13px 16px;
+  font-size: 13.5px;
+  color: var(--txt-2);
+  line-height: 1.5;
+  font-style: italic;
+  position: relative;
+  padding-left: 20px;
+}
+.li-post::before {
+  content: '"';
+  position: absolute;
+  left: 8px;
+  top: 10px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  color: var(--border);
+  line-height: 1;
+}
+.li-note {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--txt-3);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* Sklik phases */
+.sklik-flow {
+  display: grid;
+  grid-template-columns: 1fr 48px 1fr;
+  align-items: stretch;
+  gap: 0;
+}
+.sklik-phase {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 22px;
+}
+.sklik-phase:first-child { border-radius: var(--rl) 0 0 var(--rl); border-right: none; }
+.sklik-phase:last-child  { border-radius: 0 var(--rl) var(--rl) 0; border-left: none; }
+.sklik-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  font-size: 22px;
+  color: var(--txt-3);
+}
+.sklik-lbl {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--txt-3);
+  display: block;
+  margin-bottom: 6px;
+}
+.sklik-name { font-size: 15px; font-weight: 600; color: var(--txt); margin-bottom: 10px; }
+.sklik-desc { font-size: 13px; color: var(--txt-2); line-height: 1.55; }
+
+/* CRM chain */
+.crm-chain {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--rl);
+  overflow: hidden;
+}
+.crm-node {
+  padding: 16px 18px;
+  font-size: 13px;
+  color: var(--txt-2);
+  border-right: 1px solid var(--border-l);
+  line-height: 1.3;
+  flex-shrink: 0;
+}
+.crm-node:last-child { border-right: none; }
+.crm-node strong { display: block; font-size: 12px; color: var(--txt-3); font-family: 'DM Mono', monospace; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 4px; font-weight: 400; }
+.crm-node em { color: var(--accent); font-style: normal; font-weight: 600; }
+
+.crm-cross {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+.crm-tag {
+  font-size: 12px;
+  color: var(--txt-2);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 4px 10px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: .04em;
+}
+.crm-tag + .crm-tag::before {
+  content: '';
+}
+
+/* Budget overview */
+.bov-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.bov-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--rl);
+  padding: 22px 20px;
+}
+.bov-card.hi { border-color: var(--accent); }
+.bov-platform {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--txt-3);
+  display: block;
+  margin-bottom: 10px;
+}
+.bov-amount {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--txt);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.bov-unit { font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--txt-3); }
+.bov-note { font-size: 12px; color: var(--txt-3); line-height: 1.4; }
+
+/* Prospecting note */
+.prosp-note {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--rl);
+  padding: 20px 22px;
+  font-size: 13.5px;
+  color: var(--txt-2);
+  line-height: 1.65;
+}
+.prosp-note strong { color: var(--txt); }
+.prosp-note em { color: var(--accent); font-style: normal; }
+
+/* ──────────────────────────────────────────────
+   SHARED / TABS 2 & 3 COMPONENTS
+────────────────────────────────────────────── */
+
+.goals {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--rl);
+  overflow: hidden;
+}
+.goal-card { background: var(--bg-card); padding: 24px 22px; }
+.goal-level {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--txt-3);
+  display: block;
+  margin-bottom: 10px;
+}
+.goal-card p { font-size: 14px; color: var(--txt-2); line-height: 1.55; }
+
+.audiences { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.aud-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--rl);
+  padding: 22px;
+  position: relative;
+  overflow: hidden;
+}
+.aud-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--border);
+}
+.aud-card.primary::after { background: var(--accent); }
+.aud-idx {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 80px;
+  font-weight: 300;
+  color: var(--border-l);
+  position: absolute;
+  top: 8px; right: 16px;
+  line-height: 1;
+  letter-spacing: -.03em;
+  pointer-events: none;
+  user-select: none;
+}
+.aud-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-sub);
+  padding: 3px 7px;
+  border-radius: 2px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.aud-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500; margin-bottom: 8px; line-height: 1.2; }
+.aud-desc { font-size: 13.5px; color: var(--txt-2); line-height: 1.55; }
+.aud-note { margin-top: 10px; font-size: 12px; color: var(--txt-3); font-style: italic; }
+
+.phases {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+}
+.phases::before {
+  content: '';
+  position: absolute;
+  top: 22px; left: 6px; right: 6px;
+  height: 1px;
+  background: var(--border);
+  z-index: 0;
+}
+.phase { padding-right: 16px; position: relative; }
+.phase-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  background: var(--bg);
+  margin-bottom: 18px;
+  position: relative; z-index: 1;
+}
+.phase:nth-child(1) .phase-dot,
+.phase:nth-child(2) .phase-dot { border-color: var(--accent); background: var(--accent); }
+.phase:nth-child(3) .phase-dot { border-color: var(--accent); }
+.phase:nth-child(4) .phase-dot { border-color: var(--accent-data); background: var(--accent-data); }
+.phase-lbl {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--txt-3);
+  margin-bottom: 4px;
+}
+.phase-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500; margin-bottom: 4px; }
+.phase-timing { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--accent); margin-bottom: 12px; }
+.phase-desc { font-size: 13px; color: var(--txt-2); line-height: 1.55; margin-bottom: 12px; }
+.phase-ul { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+.phase-ul li { font-size: 12px; color: var(--txt-3); padding-left: 13px; position: relative; line-height: 1.45; }
+.phase-ul li::before { content: '—'; position: absolute; left: 0; color: var(--border); }
+
+.media-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.media-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--rl); padding: 20px; }
+.media-card.primary { border-color: var(--accent); background: var(--accent-sub); }
+.media-platform { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+.media-role { font-size: 12px; color: var(--txt-3); font-style: italic; margin-bottom: 12px; }
+.media-ul { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+.media-ul li { font-size: 12px; color: var(--txt-2); padding-left: 12px; position: relative; line-height: 1.4; }
+.media-ul li::before { content: '·'; position: absolute; left: 2px; color: var(--accent); font-size: 16px; line-height: 1.1; }
+
+.kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
+.kpi-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--rl); padding: 20px; }
+.kpi-lbl { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--txt-3); display: block; margin-bottom: 8px; }
+.kpi-val { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 500; line-height: 1; }
+
+.q-block { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--rl); padding: 22px; }
+.q-block p { font-size: 13px; color: var(--txt-3); font-style: italic; margin-bottom: 14px; }
+.q-list { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+.q-list li { font-size: 13px; color: var(--txt-2); padding-left: 16px; position: relative; line-height: 1.4; }
+.q-list li::before { content: '?'; position: absolute; left: 0; color: var(--accent); font-family: 'Cormorant Garamond', serif; font-size: 16px; line-height: 1.15; }
+
+.tw { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--rl); }
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+thead th {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--txt-3);
+  padding: 11px 14px;
+  text-align: left;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+thead th.r { text-align: right; }
+tbody td { padding: 10px 14px; border-bottom: 1px solid var(--border-l); color: var(--txt-2); vertical-align: middle; line-height: 1.4; }
+tbody tr:last-child td { border-bottom: none; }
+tbody td.r { text-align: right; font-family: 'DM Mono', monospace; font-variant-numeric: tabular-nums; color: var(--txt); white-space: nowrap; }
+tbody td strong { color: var(--txt); font-weight: 600; }
+.row-sum td { background: var(--bg-surface); font-weight: 600; color: var(--txt); border-top: 1px solid var(--border); }
+.badge { display: inline-flex; padding: 2px 7px; border-radius: 2px; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .04em; font-weight: 500; white-space: nowrap; }
+.bl { background: var(--cl-bg); color: var(--cl); }
+.bm { background: var(--cm-bg); color: var(--cm); }
+.bh { background: var(--ch-bg); color: var(--ch); }
+
+.budget-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 28px; }
+.b-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--rl); padding: 22px; }
+.b-box .sub-h { margin-bottom: 14px; }
+.b-line { display: flex; justify-content: space-between; align-items: baseline; padding: 8px 0; border-bottom: 1px solid var(--border-l); font-size: 13.5px; color: var(--txt-2); gap: 12px; }
+.b-line:last-child { border-bottom: none; }
+.b-line strong { font-family: 'DM Mono', monospace; font-variant-numeric: tabular-nums; font-size: 12px; color: var(--txt); white-space: nowrap; }
+.b-total { color: var(--txt); font-weight: 600; }
+.b-total strong { color: var(--accent); font-size: 13px; }
+.calc { background: var(--bg-surface); border: 1px solid var(--border); border-left: 3px solid var(--accent-data); border-radius: 0 var(--rl) var(--rl) 0; padding: 22px 24px; font-family: 'DM Mono', monospace; font-size: 13px; color: var(--txt-2); line-height: 1.9; }
+.calc .result { color: var(--txt); font-size: 14px; font-weight: 500; border-top: 1px solid var(--border); margin-top: 8px; padding-top: 8px; }
+.calc .result em { color: var(--accent-data); font-style: normal; }
+.adset-num { display: inline-flex; width: 22px; height: 22px; border-radius: 50%; background: var(--accent-sub); color: var(--accent); font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; align-items: center; justify-content: center; flex-shrink: 0; }
+.up { color: var(--cl); }
+.dn { color: var(--ch); }
+.nu { color: var(--txt-3); }
+
+/* ── CRM Tools ── */
+.crm-tools { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 24px; }
+.crm-tool { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--rl); padding: 20px; }
+.crm-tool.rec { border-color: var(--accent); }
+.crm-rec { display: inline-flex; font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; background: var(--accent-sub); color: var(--accent); padding: 2px 7px; border-radius: 2px; margin-bottom: 10px; }
+.crm-tool-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500; margin-bottom: 4px; line-height: 1.2; }
+.crm-tool-for { font-size: 12px; color: var(--txt-3); font-style: italic; margin-bottom: 12px; }
+.crm-tool-features { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+.crm-tool-features li { font-size: 12.5px; color: var(--txt-2); padding-left: 12px; position: relative; line-height: 1.4; }
+.crm-tool-features li::before { content: '·'; position: absolute; left: 2px; color: var(--accent); font-size: 16px; line-height: 1.1; }
+
+/* ── CAC / LTV ── */
+.metric-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 28px; }
+.metric-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--rl); padding: 24px; }
+.metric-abbr { font-family: 'Cormorant Garamond', serif; font-size: 52px; font-weight: 300; color: var(--accent); line-height: 1; margin-bottom: 6px; }
+.metric-full { font-size: 11px; font-family: 'DM Mono', monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--txt-3); margin-bottom: 14px; display: block; }
+.metric-def { font-size: 13.5px; color: var(--txt-2); line-height: 1.6; }
+
+/* ── Responsive ── */
+@media (max-width: 960px) {
+  .hd, .tab-nav, .tab-content { padding-left: 20px; padding-right: 20px; }
+  .goals, .audiences, .persona-grid { grid-template-columns: 1fr; }
+  .phases, .pillars-grid, .bov-grid { grid-template-columns: repeat(2,1fr); }
+  .phases::before { display: none; }
+  .kpi-row { grid-template-columns: repeat(2,1fr); }
+  .media-grid { grid-template-columns: 1fr 1fr; }
+  .budget-grid { grid-template-columns: 1fr; }
+  .q-list { grid-template-columns: 1fr; }
+  .concept-grid { grid-template-columns: repeat(2,1fr); }
+  .sklik-flow { grid-template-columns: 1fr; }
+  .sklik-arrow { display: none; }
+  .crm-chain { flex-direction: column; }
+  .crm-node { border-right: none; border-bottom: 1px solid var(--border-l); }
+  .crm-node:last-child { border-bottom: none; }
+  .crm-tools { grid-template-columns: 1fr; }
+  .metric-duo { grid-template-columns: 1fr; }
+  .rm-step { grid-template-columns: 1fr auto; }
+  .rm-arr { display: none; }
+  .rm-action { display: none; }
+}
+@media (max-width: 600px) {
+  .tab-content { padding: 24px 16px; }
+  .kpi-row, .pillars-grid, .bov-grid { grid-template-columns: 1fr 1fr; }
+  .media-grid { grid-template-columns: 1fr; }
+  .hd { padding: 20px 16px; }
+  .tab-nav { padding-left: 16px; }
+  .concept-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Channel columns ── */
+.channel-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+@media (max-width: 900px) {
+  .channel-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 540px) {
+  .channel-grid { grid-template-columns: 1fr; }
+}
+.channel-col {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--rl);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.channel-name {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border-bottom: 1px solid var(--border-l);
+  padding-bottom: 10px;
+}
+.channel-role {
+  font-size: 13px;
+  color: var(--txt-2);
+  line-height: 1.5;
+}
+.channel-stages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.channel-items {
+  margin: 4px 0 0 0;
+  padding-left: 16px;
+  font-size: 12.5px;
+  color: var(--txt-2);
+  line-height: 1.7;
+}
+.channel-items li { margin: 0; }
+
+/* ── Sklik supplementary callout ── */
+.sklik-supp {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent-data);
+  border-radius: var(--r);
+  padding: 14px 18px;
+  font-size: 13px;
+  color: var(--txt-2);
+  line-height: 1.6;
+  margin-top: 4px;
+}
+.sklik-supp-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--accent-data);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* ── Budget summary cards ── */
+.budget-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 20px;
+}
+@media (max-width: 700px) {
+  .budget-summary-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.bsum-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--rl);
+  padding: 18px 16px;
+  text-align: center;
+}
+.bsum-card.accent {
+  background: var(--accent-sub);
+  border-color: var(--accent);
+}
+.bsum-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--txt-3);
+  margin-bottom: 8px;
+}
+.bsum-val {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--txt);
+  line-height: 1.1;
+}
+.bsum-sub {
+  font-size: 11px;
+  color: var(--txt-3);
+  margin-top: 4px;
+}
+
+/* ── Keyword filter ── */
+.kf-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+.kf-btn {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: .05em;
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--txt-2);
+  cursor: pointer;
+  transition: background .15s, color .15s, border-color .15s;
+}
+.kf-btn:hover {
+  background: var(--bg-surface);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.kf-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.kw-table-wrap { margin-top: 0; }
+.kw-cat-label {
+  font-size: 11px;
+  color: var(--txt-3);
+  white-space: nowrap;
+}
+.kw-count {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--txt-3);
+  margin-top: 10px;
+  letter-spacing: .04em;
+}
+tr[data-cat].hidden { display: none; }
+.mono { font-family: 'DM Mono', monospace; font-variant-numeric: tabular-nums; }
+.txt3 { color: var(--txt-3); }
+
+/* ── Channel platform header ── */
+.channel-col {
+  border-top: 3px solid var(--ch-accent, var(--accent));
+  position: relative;
+}
+.ch-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-l);
+  margin-bottom: 4px;
+}
+.ch-icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  background: var(--ch-accent, var(--accent));
+  color: #fff;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: .02em;
+}
+.channel-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--txt);
+  border-bottom: none;
+  padding-bottom: 0;
+  letter-spacing: .01em;
+}
+.ch-type {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--txt-3);
+  margin-top: 1px;
+}
+.ch-budget {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-l);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.ch-budget-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--txt-3);
+}
+.ch-budget-val {
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ch-accent, var(--accent));
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Meta intro note ── */
+.meta-intro-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: rgba(123,94,167,.08);
+  border: 1px solid rgba(123,94,167,.2);
+  border-radius: var(--rl);
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  font-size: 13.5px;
+  color: var(--txt-2);
+  line-height: 1.6;
+}
+.meta-intro-icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  background: #7B5EA7;
+  color: #fff;
+  border-radius: 6px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Goals simple ── */
+.goals-simple {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+@media (max-width: 600px) {
+  .goals-simple { grid-template-columns: 1fr; }
+}
+.goal-simple {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--rl);
+  padding: 16px;
+}
+.goal-s-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--txt-3);
+  letter-spacing: .06em;
+  margin-bottom: 4px;
+}
+.goal-s-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--accent);
+  font-family: 'DM Mono', monospace;
+  margin-bottom: 8px;
+}
+.goal-s-text {
+  font-size: 13.5px;
+  color: var(--txt-2);
+  line-height: 1.55;
+}
+
+/* ── Media cols (book tab) ── */
+.media-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 12px;
+}
+@media (max-width: 800px) {
+  .media-cols { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .media-cols { grid-template-columns: 1fr; }
+}
+.mc-col {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--rl);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.mc-col.primary {
+  border-color: rgba(123,94,167,.35);
+  background: rgba(123,94,167,.04);
+}
+.mc-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 5px;
+  color: #fff;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2px;
+  flex-shrink: 0;
+}
+.mc-platform {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--txt);
+}
+.mc-role {
+  font-size: 11px;
+  color: var(--txt-3);
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .04em;
+  margin-bottom: 4px;
+}
+.mc-list {
+  margin: 0;
+  padding-left: 14px;
+  font-size: 12px;
+  color: var(--txt-2);
+  line-height: 1.7;
+}
+.mc-list li { margin: 0; }
+
+/* ── Partnerships tab ── */
+.ps-lead {
+  font-size: 15px;
+  color: var(--txt-2);
+  line-height: 1.7;
+  max-width: 720px;
+  border-left: 3px solid var(--accent);
+  padding-left: 16px;
+}
+
+/* Partner table */
+.ps-table-wrap { margin-top: 12px; }
+.ps-table td, .ps-table th { vertical-align: top; }
+.ps-seg {
+  display: inline-block;
+  font-family: 'DM Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  background: var(--accent-sub);
+  color: var(--accent);
+  padding: 2px 8px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+/* Approach steps */
+.ps-approach {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 16px;
+  border-left: 2px solid var(--border);
+  padding-left: 0;
+}
+.ps-step {
+  display: flex;
+  gap: 20px;
+  padding: 20px 0 20px 24px;
+  border-bottom: 1px solid var(--border-l);
+  position: relative;
+}
+.ps-step:last-child { border-bottom: none; }
+.ps-step::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 24px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.ps-step-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--txt-3);
+  letter-spacing: .06em;
+  flex-shrink: 0;
+  padding-top: 2px;
+  min-width: 24px;
+}
+.ps-step-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--txt);
+  margin-bottom: 6px;
+}
+.ps-step-body p {
+  font-size: 13.5px;
+  color: var(--txt-2);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Tracking grid */
+.ps-tracking-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+}
+@media (max-width: 800px) {
+  .ps-tracking-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.ps-track-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--rl);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ps-track-icon {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  color: #fff;
+  background: var(--accent);
+  width: 28px;
+  height: 28px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2px;
+}
+.ps-track-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--txt);
+}
+.ps-track-card p {
+  font-size: 12px;
+  color: var(--txt-2);
+  line-height: 1.6;
+  margin: 0;
+}
+.ps-example {
+  margin-top: 16px;
+  background: var(--accent-sub);
+  border: 1px solid var(--accent);
+  border-radius: var(--rl);
+  padding: 14px 18px;
+  font-size: 14px;
+  color: var(--txt-2);
+  line-height: 1.6;
+}
+.ps-example-label {
+  display: block;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+/* ── Partner list table ── */
+.partners-table td { vertical-align: top; padding: 14px 12px; }
+.partners-table td:first-child { min-width: 180px; }
+.partner-seg {
+  display: inline-block;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 2px;
+  margin-bottom: 4px;
+}
+.partner-seg.bank  { background: rgba(45,85,71,.1);   color: #2D5547; }
+.partner-seg.biz   { background: rgba(74,63,51,.1);   color: #4A3F33; }
+.partner-seg.golf  { background: rgba(58,122,86,.1);  color: #3A7A56; }
+.partner-seg.auto  { background: rgba(154,114,54,.1); color: #9A7236; }
+.partner-seg.hotel { background: rgba(11,126,187,.1); color: #0B7EBB; }
+.partner-seg.barber{ background: rgba(139,64,64,.1);  color: #8B4040; }
+
+/* ── Site footer ── */
+.site-footer {
+  border-top: none;
+  background: var(--hd-bg, #1C3A2F);
+  padding: 20px 52px;
+}
+.footer-inner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.footer-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255,255,255,.75);
+  letter-spacing: .02em;
+}
+.footer-sep { color: rgba(255,255,255,.2); font-size: 14px; }
+.footer-link {
+  font-family: 'DM Mono', monospace;
+  font-size: 11.5px;
+  color: rgba(255,255,255,.45);
+  text-decoration: none;
+  letter-spacing: .02em;
+  transition: color .15s;
+}
+.footer-link:hover { color: rgba(255,255,255,.85); }
+
+/* ── Channel rows layout ── */
+.ch-rows {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-l);
+  border-radius: var(--rl);
+  overflow: hidden;
+}
+.ch-row {
+  display: grid;
+  grid-template-columns: 220px 1fr 180px;
+  gap: 0;
+  border-bottom: 1px solid var(--border-l);
+  border-left: 4px solid var(--ch-accent, var(--accent));
+  background: var(--bg-card);
+  transition: background .15s;
+}
+.ch-row:last-child { border-bottom: none; }
+.ch-row:hover { background: var(--bg); }
+@media (max-width: 800px) {
+  .ch-row { grid-template-columns: 1fr; }
+}
+
+.ch-row-left {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 20px 20px 20px 16px;
+  border-right: 1px solid var(--border-l);
+}
+.ch-row-icon {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  background: var(--ch-accent, var(--accent));
+  color: #fff;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+}
+.ch-row-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--txt);
+  line-height: 1.2;
+}
+.ch-row-type {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--txt-3);
+  margin-top: 3px;
+}
+
+.ch-row-mid {
+  padding: 18px 20px;
+  border-right: 1px solid var(--border-l);
+}
+.ch-row-role {
+  font-size: 13px;
+  color: var(--txt-2);
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+.ch-row-list {
+  margin: 0;
+  padding-left: 14px;
+  font-size: 12px;
+  color: var(--txt-3);
+  line-height: 1.7;
+}
+.ch-row-list li { margin: 0; }
+
+.ch-row-right {
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+.ch-row-stages { display: flex; flex-wrap: wrap; gap: 4px; }
+.ch-row-budget {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ch-accent, var(--accent));
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Persona demo text — bigger ── */
+.persona-demo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--txt);
+  margin-bottom: 10px;
+  line-height: 1.35;
+}
+
+/* ── CRM minor section ── */
+.sec-minor .sec-eyebrow {
+  font-size: 15px;
+  color: var(--txt-3);
+  border-bottom-color: var(--bg-surface);
+}
+.sec-minor {
+  margin-bottom: 32px;
+  padding: 24px;
+  background: var(--bg-surface);
+  border-radius: var(--rl);
+}
+
+/* ── Book goals list ── */
+.book-goals-note { font-size:13.5px; color:var(--txt-2); line-height:1.65; max-width:680px; margin-bottom:16px; border-left:3px solid var(--accent); padding-left:14px; }
+.book-goals-list { margin:0; padding-left:0; list-style:none; display:flex; flex-direction:column; gap:10px; }
+.book-goals-list li { font-size:13.5px; color:var(--txt-2); line-height:1.55; padding:10px 14px; background:var(--bg-surface); border-radius:var(--r); }
+.book-goals-list li strong { color:var(--txt); }
+/* ── Media mix rows ── */
+.mm-rows { display:flex; flex-direction:column; border:1px solid var(--border-l); border-radius:var(--rl); overflow:hidden; }
+.mm-row { display:grid; grid-template-columns:220px 1fr; border-bottom:1px solid var(--border-l); background:var(--bg-card); }
+.mm-row:last-child { border-bottom:none; }
+.mm-left { display:flex; align-items:center; gap:12px; padding:16px 18px; border-right:1px solid var(--border-l); }
+.mm-dot { width:8px; height:8px; border-radius:50%; background:var(--mm-c,var(--accent)); flex-shrink:0; }
+.mm-name { font-size:13px; font-weight:600; color:var(--txt); }
+.mm-role { font-size:11px; color:var(--txt-3); margin-top:2px; }
+.mm-list { margin:0; padding:16px 18px 16px 32px; font-size:12.5px; color:var(--txt-3); line-height:1.7; }
+
+/* ── CRM compact tool list ── */
+.crm-tool-list { display:flex; flex-direction:column; border:1px solid var(--border-l); border-radius:var(--r); overflow:hidden; margin-bottom:20px; }
+.crm-tl-row { display:grid; grid-template-columns:160px 1fr; border-bottom:1px solid var(--border-l); }
+.crm-tl-row:last-child { border-bottom:none; }
+.crm-tl-left { display:flex; align-items:center; gap:8px; flex-wrap:wrap; padding:11px 14px; border-right:1px solid var(--border-l); background:var(--bg-surface); }
+.crm-tl-name { font-size:12.5px; font-weight:600; color:var(--txt); }
+.crm-tl-rec { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:.06em; text-transform:uppercase; color:var(--accent); background:var(--accent-sub); padding:2px 6px; border-radius:2px; }
+.crm-tl-desc { padding:11px 14px; font-size:12.5px; color:var(--txt-3); line-height:1.6; }
+
+/* ── Channel columns ── */
+.ch-cols { display:grid; grid-template-columns:repeat(5,1fr); gap:0; border:1px solid var(--border-l); border-radius:var(--rl); overflow:hidden; }
+.ch-col { display:flex; flex-direction:column; padding:20px 16px 16px; border-right:1px solid var(--border-l); background:var(--bg-card); }
+.ch-col:last-child { border-right:none; }
+.ch-col-top { margin-bottom:12px; }
+.ch-col-name { font-size:13px; font-weight:700; color:var(--txt); line-height:1.2; }
+.ch-col-type { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:.07em; text-transform:uppercase; color:var(--txt-3); margin-top:3px; }
+.ch-col-role { font-size:12px; color:var(--txt); line-height:1.5; margin-bottom:10px; flex-shrink:0; }
+.ch-col-role strong { color:var(--txt); }
+.ch-col-list { margin:0; padding-left:14px; font-size:11.5px; color:var(--txt-2); line-height:1.65; flex:1; }
+.ch-col-footer { margin-top:16px; border-top:1px solid var(--border-l); padding-top:12px; }
+.ch-col-stages { display:flex; flex-wrap:wrap; gap:4px; margin-bottom:8px; }
+.ch-col-budget { font-family:'DM Mono',monospace; font-size:11px; font-weight:700; color:var(--txt); }
+@media(max-width:900px){
+  .ch-cols { grid-template-columns:repeat(2,1fr); }
+  .ch-col { border-bottom:1px solid var(--border-l); }
+}
+@media(max-width:500px){
+  .ch-cols { grid-template-columns:1fr; }
+}
+
+/* ── Channel budget summary ── */
+.ch-budget-summary { margin-top:16px; border:1px solid var(--border-l); border-radius:var(--rl); overflow:hidden; }
+.cbs-hero { display:flex; align-items:baseline; gap:16px; flex-wrap:wrap; padding:18px 22px; background:var(--accent); border-bottom:1px solid var(--border-l); }
+.cbs-hero-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.09em; text-transform:uppercase; color:rgba(255,255,255,.6); flex-shrink:0; align-self:center; }
+.cbs-hero-val { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:500; color:#fff; line-height:1; }
+.cbs-hero-note { font-size:11px; color:rgba(255,255,255,.5); margin-left:auto; align-self:center; font-style:italic; }
+.cbs-cols { display:flex; background:var(--bg-card); }
+.cbs-item { display:flex; flex-direction:column; flex:1; padding:12px 16px; border-right:1px solid var(--border-l); }
+.cbs-item.last { border-right:none; }
+.cbs-name { font-size:11px; color:var(--txt-3); margin-bottom:4px; }
+.cbs-val { font-family:'DM Mono',monospace; font-size:12px; font-weight:700; color:var(--txt); }
+.cbs-item.muted .cbs-val { font-weight:400; color:var(--txt-3); font-size:11px; }
+@media(max-width:900px){ .cbs-cols { flex-wrap:wrap; } .cbs-item { flex:1 1 40%; border-bottom:1px solid var(--border-l); } }
+</style>
+
+<!-- ═══ HEADER ═══ -->
+<header class="hd">
+  <div class="hd-left">
+    <img src="data:image/png;base64,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" alt="Bespoke Fashion" class="hd-logo">
+    <div class="hd-title">Marketingová strategie</div>
+  </div>
+  <div class="hd-meta">Návrh · Q4 2025 — Q1 2026</div>
+</header>
+
+<!-- ═══ TAB NAV ═══ -->
+<nav class="tab-nav" role="tablist" aria-label="Sekce strategie">
+  <button class="tab-btn active" data-tab="overview" role="tab" aria-selected="true">Úvod</button>
+  <button class="tab-btn" data-tab="perf" role="tab" aria-selected="false">PPC</button>
+  <button class="tab-btn" data-tab="book" role="tab" aria-selected="false">Kniha Bespoke Fashion</button>
+  <button class="tab-btn" data-tab="content" role="tab" aria-selected="false">Content marketing</button>
+  <button class="tab-btn" data-tab="partnerships" role="tab" aria-selected="false">Partnerships</button>
+</nav>
+
+
+<!-- ══════════════════════════════════════════════════
+     TAB 1 — PŘEHLED STRATEGIE
+══════════════════════════════════════════════════ -->
+<main class="tab-content active" id="tab-overview">
+
+  <section class="sec">
+    <span class="sec-eyebrow">Strategie a rozpočty</span>
+    <p style="font-size:13px;color:var(--txt-3);margin-bottom:20px;">
+      Každý kanál má jiné místo ve funnelu — a jiný způsob komunikace.
+    </p>
+    <div class="ch-cols">
+
+      <div class="ch-col" style="--ch-accent:#4A7FC1;">
+        <div class="ch-col-top">
+          <div class="ch-col-name">Google Ads</div>
+          <div class="ch-col-type">Search &amp; Display</div>
+        </div>
+        <div class="ch-col-role">Zachytáváme poptávku, která <strong>už existuje</strong></div>
+        <ul class="ch-col-list">
+          <li>Search: branded + generic klíčová slova</li>
+          <li>Remarketing na web visitors</li>
+          <li>Display — remarketing &amp; Lookalike</li>
+        </ul>
+        <div class="ch-col-footer">
+          <div class="ch-col-stages">
+            <span class="stage s-aw">Awareness</span>
+            <span class="stage s-cv">Konverze</span>
+            <span class="stage s-rt">Remarketing</span>
+          </div>
+          <div class="ch-col-budget">15–20 tis. Kč / měs.</div>
+        </div>
+      </div>
+
+      <div class="ch-col" style="--ch-accent:#7B5EA7;">
+        <div class="ch-col-top">
+          <div class="ch-col-name">Meta Ads</div>
+          <div class="ch-col-type">Facebook &amp; Instagram</div>
+        </div>
+        <div class="ch-col-role">Vytváříme poptávku tam, kde <strong>cílová skupina žije</strong></div>
+        <ul class="ch-col-list">
+          <li>Prospecting: Praha + okolí, muži 40–65+</li>
+          <li>Video, carousel, single image</li>
+          <li>60–70 % prospecting · 30–40 % remarketing</li>
+        </ul>
+        <div class="ch-col-footer">
+          <div class="ch-col-stages">
+            <span class="stage s-aw">Awareness</span>
+            <span class="stage s-co">Consideration</span>
+            <span class="stage s-rt">Remarketing</span>
+          </div>
+          <div class="ch-col-budget">12–15 tis. Kč / měs.</div>
+        </div>
+      </div>
+
+      <div class="ch-col" style="--ch-accent:#E8730A;">
+        <div class="ch-col-top">
+          <div class="ch-col-name">Sklik</div>
+          <div class="ch-col-type">Seznam.cz · Fáze 2</div>
+        </div>
+        <div class="ch-col-role">Česky specifická cílová skupina — doplněk <strong>po ověření Google</strong></div>
+        <ul class="ch-col-list">
+          <li>Search na Seznam.cz — uživatelé mimo Google</li>
+          <li>Podmíněno výsledky Google phase 1</li>
+          <li>Testovací nasazení po 4–6 týdnech</li>
+        </ul>
+        <div class="ch-col-footer">
+          <div class="ch-col-stages">
+            <span class="stage s-aw">Awareness</span>
+            <span class="stage s-cv">Konverze</span>
+          </div>
+          <div class="ch-col-budget">5–10 tis. Kč / měs.</div>
+        </div>
+      </div>
+
+      <div class="ch-col" style="--ch-accent:#0B7EBB;">
+        <div class="ch-col-top">
+          <div class="ch-col-name">LinkedIn</div>
+          <div class="ch-col-type">Personal brand · Organic first</div>
+        </div>
+        <div class="ch-col-role">Personal brand: <strong>budujeme člověka</strong>, ne logo</div>
+        <ul class="ch-col-list">
+          <li>Organický obsah — expertiza, příběhy</li>
+          <li>Klientské transformace a procesy</li>
+          <li>Paid amplifikace top postů (ad hoc)</li>
+        </ul>
+        <div class="ch-col-footer">
+          <div class="ch-col-stages">
+            <span class="stage s-aw">Awareness</span>
+            <span class="stage s-co">Consideration</span>
+          </div>
+          <div class="ch-col-budget">Organic + ad hoc paid</div>
+        </div>
+      </div>
+
+      <div class="ch-col" style="--ch-accent:#2D5547;">
+        <div class="ch-col-top">
+          <div class="ch-col-name">CRM &amp; E-mail</div>
+          <div class="ch-col-type">Retention · Stávající klienti</div>
+        </div>
+        <div class="ch-col-role">Stávající klienti jsou <strong>nejlevnější revenue</strong></div>
+        <ul class="ch-col-list">
+          <li>Raynet CRM — pipeline + segmentace</li>
+          <li>Sezónní e-mail aktivace</li>
+          <li>Cross-sell: oblek → košile → kabát</li>
+        </ul>
+        <div class="ch-col-footer">
+          <div class="ch-col-stages">
+            <span class="stage s-in">Retention</span>
+            <span class="stage s-cv">Konverze</span>
+            <span class="stage s-ad">Advocacy</span>
+          </div>
+          <div class="ch-col-budget">Interní náklady + CRM</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="ch-budget-summary">
+      <div class="cbs-hero">
+        <div class="cbs-hero-label">Celkový odhadovaný media budget</div>
+        <div class="cbs-hero-val">32–45 tis. Kč / měs.</div>
+        <div class="cbs-hero-note">placené kanály · Google Ads + Meta Ads + Sklik</div>
+      </div>
+      <div class="cbs-cols">
+        <div class="cbs-item">
+          <span class="cbs-name">Google Ads</span>
+          <span class="cbs-val">15–20 tis. Kč</span>
+        </div>
+        <div class="cbs-item">
+          <span class="cbs-name">Meta Ads</span>
+          <span class="cbs-val">12–15 tis. Kč</span>
+        </div>
+        <div class="cbs-item">
+          <span class="cbs-name">Sklik</span>
+          <span class="cbs-val">5–10 tis. Kč</span>
+        </div>
+        <div class="cbs-item muted">
+          <span class="cbs-name">LinkedIn</span>
+          <span class="cbs-val">organic + ad hoc</span>
+        </div>
+        <div class="cbs-item muted last">
+          <span class="cbs-name">CRM &amp; E-mail</span>
+          <span class="cbs-val">interní náklady</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <span class="sec-eyebrow">Cílové skupiny — Persony</span>
+    <div class="persona-grid">
+
+      <div class="persona-card">
+        <div class="persona-letter">A</div>
+        <div class="persona-demo">45–65 · Podnikatel / Management / Senior professional</div>
+        <p class="persona-desc">Má peníze, má málo času. Móda ho možná vůbec nezajímá. Potřebuje jistotu, že bude vypadat dobře — bez toho, aby o tom musel přemýšlet.</p>
+        <div class="persona-msg">„Přijdu jednou, dostanu výsledek. Žádné rozhodování."</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-letter">B</div>
+        <div class="persona-demo">CEO / Board / Právník / Finančník / Poradce</div>
+        <p class="persona-desc">Oblečení je součástí profesní identity. Vnímá ho jako investici, ne výdaj. Značka Bespoke komunikuje totéž co jeho pracovní pozice.</p>
+        <div class="persona-msg">„Vaše oblečení komunikuje ještě předtím, než promluvíte."</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-letter">C</div>
+        <div class="persona-demo">Occasion buyer · Svatba / Gala / Black tie / Ples / Prezentace</div>
+        <p class="persona-desc">Silný moment potřeby — ideální vstup přes Google Search. Má jasnou příležitost, jasný termín a ochotu zaplatit za správné řešení.</p>
+        <div class="persona-msg">Search zachytí poptávku v momentě, kdy ji má.</div>
+      </div>
+
+      <div class="persona-card">
+        <div class="persona-letter">D</div>
+        <div class="persona-demo">Žena / Partnerka · Iniciátorka nákupu</div>
+        <p class="persona-desc">Nemusí být konečná zákaznice, ale může být impulzem k nákupu. Před Vánoci, při narozeninách, výročí. Zesilují ji ještě kniha, voucher, dárkové balení.</p>
+        <div class="persona-msg">Nepodcenit — může rozhodovat o prvním kontaktu.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Meta obsah + remarketing -->
+
+  <!-- Meta pillars -->
+
+  <section class="sec sec-minor">
+    <span class="sec-eyebrow">CRM — Implementace a metriky</span>
+
+    <div class="crm-tool-list">
+      <div class="crm-tl-row">
+        <div class="crm-tl-left">
+          <span class="crm-tl-name">Raynet CRM</span>
+          <span class="crm-tl-rec">doporučujeme</span>
+        </div>
+        <div class="crm-tl-desc">Český nástroj, jednoduchý na provoz. Pipeline, vlastní pole, Gmail/Outlook, integrace s Ecomailem, základní automatizace.</div>
+      </div>
+      <div class="crm-tl-row">
+        <div class="crm-tl-left">
+          <span class="crm-tl-name">Pipedrive</span>
+        </div>
+        <div class="crm-tl-desc">Alternativa se silným sales pipeline. Vhodné pokud je prioritou obchodní proces.</div>
+      </div>
+      <div class="crm-tl-row">
+        <div class="crm-tl-left">
+          <span class="crm-tl-name">HubSpot</span>
+        </div>
+        <div class="crm-tl-desc">CRM + marketing automation. Pro Bespoke zatím přes rámec — vhodné při výraznějším škálování.</div>
+      </div>
+    </div>
+
+    <div class="sub-h">Klíčové metriky, které nám CRM umožní spočítat</div>
+    <div class="crm-tool-list">
+      <div class="crm-tl-row">
+        <div class="crm-tl-left"><span class="crm-tl-name">CAC</span><span style="font-size:10px;color:var(--txt-3);">Customer Acquisition Cost</span></div>
+        <div class="crm-tl-desc">Kolik nás stojí získat jednoho skutečného nového zákazníka. S CRM propojíme mediální výdaje s reálnými objednávkami a spočítáme podle kanálu.</div>
+      </div>
+      <div class="crm-tl-row">
+        <div class="crm-tl-left"><span class="crm-tl-name">LTV</span><span style="font-size:10px;color:var(--txt-3);">Lifetime Value</span></div>
+        <div class="crm-tl-desc">Celková hodnota klienta po dobu jeho vztahu se značkou. Bespoke má přirozeně vysoké LTV — klient, který přijde jednou, se může vracet desítky let.</div>
+      </div>
+    </div>
+    <div class="content-note" style="margin-top:14px;">
+      Cíl není jen reportovat CAC a LTV — ale zjistit, které kanály přinášejí klienty s <strong>nejvyšším LTV</strong>, ne jen nejnižším CPL. To je rozdíl mezi optimalizací na lead a optimalizací na skutečný obchodní výsledek.
+    </div>
+  </section>
+
+  <!-- Budget -->
+
+</main>
+
+
+<!-- ══════════════════════════════════════════════════
+     TAB 2 — KAMPAŇ PRO KNIHU
+══════════════════════════════════════════════════ -->
+<main class="tab-content" id="tab-content">
+
+  <section class="sec">
+    <span class="sec-eyebrow">Meta — Obsahová strategie</span>
+
+    <div class="pillars-grid">
+      <div class="pillar-card">
+        <span class="pillar-name">Expertise</span>
+        <p class="pillar-ex">„5 chyb, které muži dělají při výběru obleku."</p>
+      </div>
+      <div class="pillar-card">
+        <span class="pillar-name">Education</span>
+        <p class="pillar-ex">„Kdy je vhodný smoking a kdy tmavý oblek?"</p>
+      </div>
+      <div class="pillar-card">
+        <span class="pillar-name">Craft</span>
+        <p class="pillar-ex">Jak vzniká oblek — fitting, látky, ruční práce, detaily.</p>
+      </div>
+      <div class="pillar-card">
+        <span class="pillar-name">Transformation</span>
+        <p class="pillar-ex">Before / after. Jak střih mění proporce postavy.</p>
+      </div>
+      <div class="pillar-card">
+        <span class="pillar-name">Client Stories</span>
+        <p class="pillar-ex">„Klienta oblékáme už 17 let." — příběhy místo reklam.</p>
+      </div>
+      <div class="pillar-card">
+        <span class="pillar-name">Personality</span>
+        <p class="pillar-ex">Návrhářka / krejčí mluví přímo do kamery.</p>
+      </div>
+      <div class="pillar-card">
+        <span class="pillar-name">Occasions</span>
+        <p class="pillar-ex">Business, svatba, gala, ples, důležitá prezentace.</p>
+      </div>
+      <div class="pillar-card" style="background:var(--bg-surface);border-style:dashed;">
+        <span class="pillar-name" style="color:var(--txt-3)">Klíčový princip</span>
+        <p class="pillar-ex" style="font-style:normal;color:var(--txt-2);">Organika a paid nejsou dvě oddělené věci. Nejlepší obsah funguje na obou.</p>
+      </div>
+    </div>
+
+    <div class="content-note">
+      <strong>Méně:</strong> „Podívejte se na náš krásný oblek."&ensp;&mdash;&ensp;<strong>Více:</strong> „Takhle poznáte, že vám sako nesedí." — tenhle posun je největší změna oproti klasické módní komunikaci.
+    </div>
+  </section>
+
+  <!-- Remarketing ladder -->
+
+  <!-- LinkedIn -->
+
+  <section class="sec">
+    <span class="sec-eyebrow">LinkedIn — Personal brand</span>
+    <p class="li-intro">
+      Největší potenciál je organický. A nebudujeme jen LinkedIn Bespoke Fashion — budujeme <strong>osobní profil návrhářky</strong>. Člověk důvěřuje člověku víc než logu. Obsah posouváme z fashion směrem k business, leadership a personal brand.
+    </p>
+    <div class="li-posts">
+      <div class="li-post">20 let oblékám české manažery. Toto jsou tři chyby, které vidím nejčastěji.</div>
+      <div class="li-post">Co o vás říká oblek ještě předtím, než začnete prezentovat.</div>
+      <div class="li-post">Proč nejdražší oblek v místnosti nemusí být ten nejlepší.</div>
+      <div class="li-post">Business casual způsobil českým mužům nový problém.</div>
+      <div class="li-post">Co by měl mít každý CEO ve svém šatníku.</div>
+    </div>
+    <p class="li-note">LinkedIn Ads: pouze jako amplification — když organický post výrazně nadprůměrně funguje, podpořit ho směrem k relevantnímu business publiku. Žádný velký always-on budget.</p>
+  </section>
+
+  <!-- Sklik -->
+
+  <!-- CRM -->
+
+</main>
+
+<main class="tab-content" id="tab-partnerships">
+
+  <!-- Úvod -->
+  <section class="sec">
+    <span class="sec-eyebrow">Strategic Partnerships &amp; Client Acquisition</span>
+    <p class="ps-lead">
+      Klíčová otázka není „kde inzerovat" — ale <strong>kdo už má vztah s člověkem, kterého potřebujeme oslovit?</strong> Prémiové barber shopy, golfové kluby, concierge služby, privátní bankovnictví, wealth management, prémiové automobilové dealerství, business kluby, hotely, advokátní a poradenské prostředí, eventy nebo whisky &amp; cigar komunity. Ne plošně — vybrat několik značek s opravdu podobnou klientelou a vytvořit společnou aktivaci.
+    </p>
+  </section>
+
+  <!-- Partner segmenty — tabulka -->
+  <section class="sec">
+    <span class="sec-eyebrow">Segmenty &amp; logika spolupráce</span>
+    <div class="ps-table-wrap tw">
+      <table class="ps-table">
+        <thead>
+          <tr>
+            <th>Segment</th>
+            <th>Co může nabídnout Bespoke</th>
+            <th>Co nabízí partner</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="ps-seg">Private banking</span></td>
+            <td>VIP experience / styling pro klienty</td>
+            <td>Bonitní klientela — nejvyšší LTV potenciál</td>
+          </tr>
+          <tr>
+            <td><span class="ps-seg">Premium automotive</span></td>
+            <td>Event, content, styling spolupráce</td>
+            <td>Bonitní muži — přirozená cílovka</td>
+          </tr>
+          <tr>
+            <td><span class="ps-seg">Golf</span></td>
+            <td>Styling &amp; event v prostředí klubu</td>
+            <td>Koncentrace cílové skupiny na jednom místě</td>
+          </tr>
+          <tr>
+            <td><span class="ps-seg">Luxury hotel</span></td>
+            <td>Concierge &amp; guest styling služba</td>
+            <td>Zahraniční + VIP klientela, hospitality kanál</td>
+          </tr>
+          <tr>
+            <td><span class="ps-seg">Barber</span></td>
+            <td>Vzájemné referraly, obsah, event</td>
+            <td>Relevantní muži — silná důvěra v prostředí</td>
+          </tr>
+          <tr>
+            <td><span class="ps-seg">Hodinky &amp; šperky</span></td>
+            <td>Společný content &amp; event, styling</td>
+            <td>Podobná cílovka — důraz na řemeslo &amp; luxus</td>
+          </tr>
+          <tr>
+            <td><span class="ps-seg">Business club</span></td>
+            <td>Expert talk, styling workshop</td>
+            <td>CEOs, founders — přímý přístup k rozhodovatelům</td>
+          </tr>
+          <tr>
+            <td><span class="ps-seg">Wealth management</span></td>
+            <td>VIP event, co-branded experience</td>
+            <td>HNW klienti — high-value relationship</td>
+          </tr>
+          <tr>
+            <td><span class="ps-seg">Wine &amp; whisky</span></td>
+            <td>Společný večer, lifestyle event</td>
+            <td>Lifestyle audience — otevřenost zážitkovým akcím</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Přístup — jak vybírat -->
+  <section class="sec">
+    <span class="sec-eyebrow">Přístup k výběru</span>
+    <div class="ps-approach">
+      <div class="ps-step">
+        <div class="ps-step-num">01</div>
+        <div class="ps-step-body">
+          <div class="ps-step-title">Longlist ~20 kandidátů</div>
+          <p>Sestavit seznam cca 20 potenciálních partnerů. Kritérium: opravdu podobná klientela — ne jen podobná kategorie. BMW dealer a Golf club Albatross jsou jiná kvalita leadu než generický lifestyle brand.</p>
+        </div>
+      </div>
+      <div class="ps-step">
+        <div class="ps-step-num">02</div>
+        <div class="ps-step-body">
+          <div class="ps-step-title">Shortlist 3–5 priorit</div>
+          <p>Z longlístu vybrat 3–5 partnerů, kde existuje osobní kontakt, kde je klientela opravdu překrývající se a kde je partner ochoten investovat do spolupráce vlastní energii — ne jen dostat komisi.</p>
+        </div>
+      </div>
+      <div class="ps-step">
+        <div class="ps-step-num">03</div>
+        <div class="ps-step-body">
+          <div class="ps-step-title">Aktivace — společná, ne jen referral</div>
+          <p>Nejsilnější formát není „předej kontakt a dostaneš %" — ale společná aktivace. Event, content, VIP experience. Obě strany stojí za výsledkem a obě ho komunikují svému publiku.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <!-- Konkrétní partneři v Praze -->
+  <section class="sec">
+    <span class="sec-eyebrow">Potenciální partneři — Praha</span>
+    <p style="font-size:13.5px;color:var(--txt-2);margin-bottom:20px;line-height:1.65;max-width:680px;">
+      Longlist 15 konkrétních organizací k oslovení. Cíl: z tohoto seznamu vybrat 3–5 priorit a zahájit aktivní outreach. Každý byl vybrán pro přímý overlap s cílovou klientelou Bespoke.
+    </p>
+    <div class="tw">
+      <table class="partners-table">
+        <thead>
+          <tr>
+            <th>Partner</th>
+            <th>Proč je zajímavý</th>
+            <th>S čím ho oslovit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="partner-seg bank">Private banking</span><br><strong>Erste Private Banking</strong></td>
+            <td>Přímý přístup k bonitní klientele</td>
+            <td>Private Style Evening pro klienty — styling talk + kniha + konzultace</td>
+          </tr>
+          <tr>
+            <td><span class="partner-seg bank">Private banking</span><br><strong>UniCredit Private &amp; Wealth</strong></td>
+            <td>Lifestyle &amp; concierge benefity pro nejnáročnější klientelu</td>
+            <td>VIP benefit: privátní styling / dress-code masterclass</td>
+          </tr>
+          <tr>
+            <td><span class="partner-seg bank">Private banking</span><br><strong>J&amp;T Banka</strong></td>
+            <td>Podnikatelské &amp; investorské publikum, private wealth</td>
+            <td>Gentleman's / Business Style Evening — komorní formát</td>
+          </tr>
+          <tr>
+            <td><span class="partner-seg bank">Private banking</span><br><strong>Bank Gutmann AG (CZ)</strong></td>
+            <td>Privátní banka s velmi úzkým prémiovým publikem</td>
+            <td>Osobní VIP event pro klienty — nikoliv masová promo spolupráce</td>
+          </tr>
+          <tr>
+            <td><span class="partner-seg biz">Business klub</span><br><strong>Prague Business Club</strong></td>
+            <td>Business networking — přímý fit s cílovou skupinou</td>
+            <td>„Dress for influence" talk + možnost osobní konzultace</td>
+          </tr>
+          <tr>
+            <td><span class="partner-seg biz">Business klub</span><br><strong>British Chamber of Commerce CZ</strong></td>
+            <td>200+ členských firem, 70+ akcí ročně, speaking &amp; partnership</td>
+            <td>Expert talk / business breakfast / event partner</td>
+          </tr>
+          <tr>
+            <td><span class="partner-seg golf">Golf</span><br><strong>Prague City Golf</strong></td>
+            <td>Přirozená koncentrace cílového publika</td>
+            <td>Bespoke Golf &amp; Style Day, voucher / fitting pro členy</td>
+          </tr>
+          <tr>
+            <td><span class="partner-seg golf">Golf</span><br><strong>Golf Club Praha</strong></td>
+            <td>Relevantní golfová komunita přímo v Praze</td>
+            <td>Partner turnaje + styling / VIP benefit</td>
+          </tr>
+          <tr>
+            <td><span class="partner-seg golf">Golf</span><br><strong>Golf Resort Black Bridge</strong></td>
+            <td>Velký golfový resort, relevantní klientela</td>
+            <td>Tournament partnership + nabídka konzultace po akci</td>
+          </tr>
+          <tr>
+            <td><span class="partner-seg auto">Automotive</span><br><strong>Bentley Praha</strong></td>
+            <td>Extrémně vysoký audience fit — filozofie handcrafted luxury</td>
+            <td>Bespoke × Bentley: Craftsmanship &amp; Individuality Evening</td>
+          </tr>
+          <tr>
+            <td><span class="partner-seg auto">Automotive</span><br><strong>Lamborghini Praha</strong></td>
+            <td>Filozofie individualizace produktu — přirozený overlap</td>
+            <td>VIP launch/event — auto + bespoke tailoring + kniha</td>
+          </tr>
+          <tr>
+            <td><span class="partner-seg hotel">Luxury hotel</span><br><strong>Four Seasons Hotel Prague</strong></td>
+            <td>Luxury hotel, eventové prostory, mezinárodní klientela</td>
+            <td>VIP event / trunk show / concierge referral</td>
+          </tr>
+          <tr>
+            <td><span class="partner-seg hotel">Luxury hotel</span><br><strong>Mandarin Oriental Prague</strong></td>
+            <td>Luxury hospitality, weddings, prémiový catering</td>
+            <td>Black tie / wedding styling partnership + concierge</td>
+          </tr>
+          <tr>
+            <td><span class="partner-seg hotel">Luxury hotel</span><br><strong>Augustine, Luxury Collection</strong></td>
+            <td>Prémiový hotel, meeting &amp; wedding segment</td>
+            <td>Wedding / black-tie event nebo uvedení knihy</td>
+          </tr>
+          <tr>
+            <td><span class="partner-seg barber">Barber</span><br><strong>Gentlemen's Barber Club Praha</strong></td>
+            <td>Pánská klientela, přirozené propojení grooming + style</td>
+            <td>Cross-referral / Gentleman's Day / společný content</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</main>
+
+<main class="tab-content" id="tab-book">
+
+  <section class="sec">
+    <span class="sec-eyebrow">Fáze kampaně</span>
+    
+    <div class="phases">
+      <div class="phase">
+        <div class="phase-dot"></div>
+        <div class="phase-lbl">Fáze I</div>
+        <div class="phase-name">Teaser</div>
+        <div class="phase-timing">3–4 týdny před vydáním</div>
+        <p class="phase-desc">Vytvořit očekávání. Paid rozpočet držet nízko — hlavní práce je budování publika pro remarketing.</p>
+        <ul class="phase-ul">
+          <li>Proč kniha vznikla, zákulisí tvorby</li>
+          <li>Focení, tisk, výroba — BTS obsah</li>
+          <li>Krátké myšlenky a citace z knihy</li>
+          <li>Představení obálky</li>
+          <li>Osobní video autorky</li>
+          <li>Countdown</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-dot"></div>
+        <div class="phase-lbl">Fáze II</div>
+        <div class="phase-name">Launch</div>
+        <div class="phase-timing">2–3 týdny — nejsilnější fáze</div>
+        <p class="phase-desc">„Nová kniha od… je právě v prodeji." Všechny kanály naplno.</p>
+        <ul class="phase-ul">
+          <li>Meta Ads — plný výkon</li>
+          <li>Remarketing publika z Teaseru</li>
+          <li>E-mailing na celou databázi</li>
+          <li>Organický obsah na IG / FB</li>
+          <li>PR výstupy, rozhovory</li>
+          <li>LinkedIn autorky</li>
+          <li>Search — branded search</li>
+          <li>Křest / event → obsah k dalšímu použití</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-dot"></div>
+        <div class="phase-lbl">Fáze III</div>
+        <div class="phase-name">Always-On</div>
+        <div class="phase-timing">Říjen — Listopad</div>
+        <p class="phase-desc">Komunikaci nepřerušovat, ale proměnit. Nové creatives — jiný tón, nová sociální evidence.</p>
+        <ul class="phase-ul">
+          <li>Reference a recenze čtenářů</li>
+          <li>Citace a myšlenky z knihy</li>
+          <li>Rozhovory s autorkou, podcasty</li>
+          <li>Video „pro koho jsem knihu napsala"</li>
+          <li>Obsah z eventu / křtu knihy</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="phase-dot"></div>
+        <div class="phase-lbl">Fáze IV</div>
+        <div class="phase-name">Christmas</div>
+        <div class="phase-timing">Listopad — Prosinec</div>
+        <p class="phase-desc">Nová reklamní vlna s novou logikou. Kniha = prémiový vánoční dárek. Výrazněji cílit na ženy.</p>
+        <ul class="phase-ul">
+          <li>Nové gifting creatives a messaging</li>
+          <li>Širší targeting — ženy 35–65</li>
+          <li>Podepsaná / limitovaná edice?</li>
+          <li>Elegantní dárkové balení</li>
+          <li>Bundle: kniha + voucher / Bespoke benefit</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <span class="sec-eyebrow">Investice podle fáze</span>
+    <div class="tw" style="background:var(--bg-card);">
+      <table>
+        <thead>
+          <tr><th>Fáze</th><th>Timing</th><th class="r">Media budget</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>I — Teaser</strong></td><td>3–4 týdny před vydáním</td><td class="r">5 000 – 10 000 Kč</td></tr>
+          <tr><td><strong>II — Launch</strong></td><td>2–3 týdny, nejsilnější fáze</td><td class="r">20 000 – 30 000 Kč</td></tr>
+          <tr><td><strong>III — Always-On</strong></td><td>Říjen – Listopad</td><td class="r">10 000 – 15 000 Kč / měs.</td></tr>
+          <tr><td><strong>IV — Christmas Push</strong></td><td>Listopad – Prosinec</td><td class="r">20 000 – 30 000 Kč</td></tr>
+          <tr class="row-sum"><td colspan="2"><strong>Celkem Q4 (orientačně)</strong></td><td class="r"><strong>55 000 – 85 000 Kč</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+
+  <section class="sec">
+    <span class="sec-eyebrow">Cíle kampaně</span>
+    <p class="book-goals-note">Kampaň staví primárně na <strong>Meta Ads</strong> (Facebook &amp; Instagram) — hlavní placený kanál pro budování dosahu, remarketingu i konverzí. Ostatní kanály hrají podpůrnou roli.</p>
+    <ul class="book-goals-list">
+      <li><strong>Primární:</strong> Prodej knihy — přímá konverze, měřitelný výkon, jasné KPI.</li>
+      <li><strong>Sekundární:</strong> Budování osobní značky a autority autorky.</li>
+      <li><strong>Dlouhodobý:</strong> Přivést nové relevantní publikum k Bespoke Fashion a remarketovat ho.</li>
+    </ul>
+  </section>
+
+  <section class="sec">
+    <span class="sec-eyebrow">Cílové skupiny</span>
+    <div class="audiences">
+      <div class="aud-card primary">
+        <div class="aud-idx">A</div>
+        <span class="aud-tag">Stávající publikum</span>
+        <div class="aud-title">Klienti & Followers</div>
+        <p class="aud-desc">Klienti Bespoke Fashion, databáze kontaktů, followers, návštěvníci webu. Nejsnazší cesta ke konverzi — lidé, kteří nás již znají a důvěřují značce.</p>
+        <p class="aud-note">Priorita #1 — remarketing a e-mailing na vlastní databázi.</p>
+      </div>
+      <div class="aud-card">
+        <div class="aud-idx">B</div>
+        <span class="aud-tag">Nové publikum</span>
+        <div class="aud-title">Muži 40–65</div>
+        <p class="aud-desc">Podnikatelé, management, bonitnější publikum se zájmem o business, lifestyle a styl. Přirození čtenáři tématu.</p>
+        <p class="aud-note">Na Meta: publikum příliš nepřetargetovávat, nechme breathing room.</p>
+      </div>
+      <div class="aud-card">
+        <div class="aud-idx">C</div>
+        <span class="aud-tag">Sezónní příležitost</span>
+        <div class="aud-title">Ženy 35–65</div>
+        <p class="aud-desc">Velmi zajímavé zejména před Vánoci. Kniha jako prémiový dárek pro partnera, manžela nebo otce.</p>
+        <p class="aud-note">Aktivovat výrazněji od listopadu — Christmas gifting vlna.</p>
+      </div>
+      <div class="aud-card">
+        <div class="aud-idx">D</div>
+        <span class="aud-tag">Rozšíření dosahu</span>
+        <div class="aud-title">Lookalike publika</div>
+        <p class="aud-desc">Podobná publika sestavená z nejkvalitnějších first-party dat — zákazníci, aktivní followers, video viewers.</p>
+        <p class="aud-note">Podmínka: dostatečný objem a kvalita dat pro seedování.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <span class="sec-eyebrow">Media mix</span>
+    <div class="mm-rows">
+      <div class="mm-row">
+        <div class="mm-left">
+          <span class="mm-dot" style="--mm-c:#7B5EA7;"></span>
+          <div>
+            <div class="mm-name">Meta Ads</div>
+            <div class="mm-role">Hlavní placený kanál</div>
+          </div>
+        </div>
+        <ul class="mm-list">
+          <li>Prospecting — nová relevantní publika</li>
+          <li>Remarketing — web, engagement, video</li>
+          <li>Existing audience — zákazníci / CRM</li>
+          <li>Christmas / gifting — samostatné sady</li>
+        </ul>
+      </div>
+      <div class="mm-row">
+        <div class="mm-left">
+          <span class="mm-dot" style="--mm-c:#2D5547;"></span>
+          <div>
+            <div class="mm-name">E-mailing</div>
+            <div class="mm-role">Vlastní databáze — priorita</div>
+          </div>
+        </div>
+        <ul class="mm-list">
+          <li>Segmentovaná databáze kontaktů</li>
+          <li>Launch announcement</li>
+          <li>Vánoční edice s gifting logikou</li>
+        </ul>
+      </div>
+      <div class="mm-row">
+        <div class="mm-left">
+          <span class="mm-dot" style="--mm-c:#0B7EBB;"></span>
+          <div>
+            <div class="mm-name">LinkedIn</div>
+            <div class="mm-role">Autorita a B2B dosah</div>
+          </div>
+        </div>
+        <ul class="mm-list">
+          <li>Osobní profil autorky</li>
+          <li>Thought leadership obsah</li>
+          <li>Dosah na business publikum</li>
+        </ul>
+      </div>
+      <div class="mm-row">
+        <div class="mm-left">
+          <span class="mm-dot" style="--mm-c:#6B7280;"></span>
+          <div>
+            <div class="mm-name">Organika &amp; PR</div>
+            <div class="mm-role">Earned media — každá fáze</div>
+          </div>
+        </div>
+        <ul class="mm-list">
+          <li>Tiskové výstupy k launchi</li>
+          <li>Rozhovory, podcasty</li>
+          <li>Organický obsah IG / FB</li>
+        </ul>
+      </div>
+      <div class="mm-row">
+        <div class="mm-left">
+          <span class="mm-dot" style="--mm-c:#B8874A;"></span>
+          <div>
+            <div class="mm-name">Landing Page</div>
+            <div class="mm-role">Konverzní bod — povinnost</div>
+          </div>
+        </div>
+        <ul class="mm-list">
+          <li>Claim → autorka → proč vznikla</li>
+          <li>Co čtenář získá → fotografie → reference</li>
+          <li>Cena → CTA Koupit (měřitelné)</li>
+        </ul>
+      </div>
+      <div class="mm-row">
+        <div class="mm-left">
+          <span class="mm-dot" style="--mm-c:#4A7FC1;"></span>
+          <div>
+            <div class="mm-name">Search</div>
+            <div class="mm-role">Podmíněně — branded search</div>
+          </div>
+        </div>
+        <ul class="mm-list">
+          <li>Aktivovat pokud vznikne branded search</li>
+          <li>Název knihy / jméno autorky</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="sec">
+    <span class="sec-eyebrow">Struktura ad setů</span>
+    <div class="tw"><table>
+        <thead>
+          <tr><th>Set</th><th>Publikum</th><th>Úloha</th></tr>
+        </thead>
+        <tbody>
+          <tr><td style="white-space:nowrap"><span class="adset-num">1</span>&ensp;Broad</td><td>ČR, 40–65+, bez interests</td><td>Hlavní prospecting</td></tr>
+          <tr><td style="white-space:nowrap"><span class="adset-num">2</span>&ensp;Interests</td><td>Fashion / styl + lifestyle</td><td>Test</td></tr>
+          <tr><td style="white-space:nowrap"><span class="adset-num">3</span>&ensp;Lookalike</td><td>Nejlepší first-party data</td><td>Test</td></tr>
+          <tr><td style="white-space:nowrap"><span class="adset-num">4</span>&ensp;Remarketing</td><td>Web + IG/FB engagement + video</td><td>Konverze</td></tr>
+        </tbody>
+      </table></div>
+  </section>
+
+  <section class="sec">
+    <span class="sec-eyebrow">KPI</span>
+    
+    <div class="crm-tool-list">
+      <div class="crm-tl-row">
+        <div class="crm-tl-left"><span class="crm-tl-name">Purchases</span></div>
+        <div class="crm-tl-desc">Primární metrika — přímý prodej.</div>
+      </div>
+      <div class="crm-tl-row">
+        <div class="crm-tl-left"><span class="crm-tl-name">CPA</span></div>
+        <div class="crm-tl-desc">Cena za konverzi — klíčové pro optimalizaci rozpočtu.</div>
+      </div>
+      <div class="crm-tl-row">
+        <div class="crm-tl-left"><span class="crm-tl-name">Revenue</span></div>
+        <div class="crm-tl-desc">Celkový obrat kampaně.</div>
+      </div>
+      <div class="crm-tl-row">
+        <div class="crm-tl-left"><span class="crm-tl-name">ROAS</span></div>
+        <div class="crm-tl-desc">Návratnost výdajů na reklamu.</div>
+      </div>
+    </div>
+    <div class="q-block">
+      <p>Aby bylo možné kampaň správně nastavit a smysluplně vyhodnotit, potřebujeme znát:</p>
+      <ul class="q-list">
+        <li>Prodejní cenu knihy</li>
+        <li>Náklad / marži na kus</li>
+        <li>Kde se bude prodávat (e-shop, distribuce…)</li>
+        <li>Počet dostupných kusů</li>
+        <li>Zda bude možné měřit online prodeje</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+
+<!-- ══════════════════════════════════════════════════
+     TAB 3 — GOOGLE & META VÝKON
+══════════════════════════════════════════════════ -->
+<main class="tab-content" id="tab-perf">
+
+  <!-- Budget overview — navrch -->
+  <section class="sec">
+    <span class="sec-eyebrow">Plánovaný rozpočet &amp; objem</span>
+    <div class="budget-summary-grid">
+      <div class="bsum-card accent">
+        <div class="bsum-label">Celkový search volume</div>
+        <div class="bsum-val">3 440</div>
+        <div class="bsum-sub">hledání / měsíc</div>
+      </div>
+      <div class="bsum-card">
+        <div class="bsum-label">Odhadované CTR</div>
+        <div class="bsum-val">8 %</div>
+        <div class="bsum-sub">průměr Search kampaní</div>
+      </div>
+      <div class="bsum-card">
+        <div class="bsum-label">Průměrné CPC</div>
+        <div class="bsum-val">56,50 Kč</div>
+        <div class="bsum-sub">vážený průměr portfolia</div>
+      </div>
+      <div class="bsum-card">
+        <div class="bsum-label">Odhadovaná kliknutí</div>
+        <div class="bsum-val">275</div>
+        <div class="bsum-sub">kliknutí / měsíc</div>
+      </div>
+    </div>
+
+    <div class="budget-grid" style="margin-top:24px;">
+      <div class="b-box">
+        <div class="sub-h">Doporučený mediální budget / měs.</div>
+        <div class="b-line"><span>Google Ads</span><strong>15 000 – 20 000 Kč</strong></div>
+        <div class="b-line"><span>Meta Ads</span><strong>12 000 – 15 000 Kč</strong></div>
+        <div class="b-line b-total"><span>Celkem</span><strong>27 000 – 35 000 Kč</strong></div>
+      </div>
+      <div class="b-box">
+        <div class="sub-h">Výhled a optimalizace</div>
+        <div class="b-line"><span>Revize po provozu</span><strong>6–8 týdnů</strong></div>
+        <div class="b-line"><span>Kritérium optimalizace</span><strong>Kvalita leadů + CPA</strong></div>
+        <div class="b-line"><span>Vstupní strategie</span><strong>Konzervativnější start</strong></div>
+      </div>
+    </div>
+    <div class="content-note" style="margin-top:14px;">
+      <strong>Propočet Google:</strong> 3 440 hledání × 8 % CTR = 275 kliknutí × 56,50 Kč CPC = <em>15 549 Kč / měs.</em> → doporučený základ 15–20 tis. Kč.
+    </div>
+  </section>
+
+  <!-- Keyword analýza — filtrovatelná -->
+  <section class="sec">
+    <span class="sec-eyebrow">Google Ads — Keyword analýza</span>
+    <p style="font-size:13.5px;color:var(--txt-2);margin-bottom:20px;max-width:620px;line-height:1.65;">
+      Celkem 131 klíčových slov rozdělených do 9 kategorií. Data srpen 2025 – červenec 2026.
+    </p>
+
+    <div class="kf-wrap">
+      <button class="kf-btn active" data-filter="vše">Vše</button>
+      <button class="kf-btn" data-filter="Obleky-na-míru">Obleky na míru</button>
+      <button class="kf-btn" data-filter="Krejčovství">Krejčovství</button>
+      <button class="kf-btn" data-filter="Smoking-a-Black-Tie">Smoking & Black Tie</button>
+      <button class="kf-btn" data-filter="Svatební">Svatební</button>
+      <button class="kf-btn" data-filter="Kabáty-a-Džíny-na-míru">Kabáty & Džíny na míru</button>
+      <button class="kf-btn" data-filter="Obuv-na-míru">Obuv na míru</button>
+      <button class="kf-btn" data-filter="Oblečení">Oblečení</button>
+      <button class="kf-btn" data-filter="Styling">Styling</button>
+      <button class="kf-btn" data-filter="Brand">Brand</button>
+    </div>
+
+    <div class="tw kw-table-wrap">
+      <table id="kw-table">
+        <thead>
+          <tr>
+            <th>Klíčové slovo</th>
+            <th>Kategorie</th>
+            <th class="r">Objem / měs.</th>
+            <th>Konkurence</th>
+            <th class="r">CPC rozsah</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-cat="Obleky-na-míru">
+            <td>oblek na míru</td>
+            <td class="kw-cat-label">Obleky na míru</td>
+            <td class="r mono">720</td>
+            <td><span class="badge bh">Vysoká</span></td>
+            <td class="r mono">17,32 – 59,16 Kč</td>
+          </tr>
+          <tr data-cat="Obleky-na-míru">
+            <td>pánský oblek na míru</td>
+            <td class="kw-cat-label">Obleky na míru</td>
+            <td class="r mono">30</td>
+            <td><span class="badge bh">Vysoká</span></td>
+            <td class="r mono">22,49 – 86,25 Kč</td>
+          </tr>
+          <tr data-cat="Obleky-na-míru">
+            <td>pánské obleky na míru</td>
+            <td class="kw-cat-label">Obleky na míru</td>
+            <td class="r mono">40</td>
+            <td><span class="badge bh">Vysoká</span></td>
+            <td class="r mono">18,41 – 73,47 Kč</td>
+          </tr>
+          <tr data-cat="Obleky-na-míru">
+            <td>obleky na míru</td>
+            <td class="kw-cat-label">Obleky na míru</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Obleky-na-míru">
+            <td>oblek šitý na míru</td>
+            <td class="kw-cat-label">Obleky na míru</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Obleky-na-míru">
+            <td>oblek šití na míru</td>
+            <td class="kw-cat-label">Obleky na míru</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Obleky-na-míru">
+            <td>šití obleků na míru</td>
+            <td class="kw-cat-label">Obleky na míru</td>
+            <td class="r mono">20</td>
+            <td><span class="badge bh">Vysoká</span></td>
+            <td class="r mono">13,36 – 50,61 Kč</td>
+          </tr>
+          <tr data-cat="Obleky-na-míru">
+            <td>pánské oblečení na míru</td>
+            <td class="kw-cat-label">Obleky na míru</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Obleky-na-míru">
+            <td>pánský oděv na míru</td>
+            <td class="kw-cat-label">Obleky na míru</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Obleky-na-míru">
+            <td>oblek na míru Praha</td>
+            <td class="kw-cat-label">Obleky na míru</td>
+            <td class="r mono">140</td>
+            <td><span class="badge bh">Vysoká</span></td>
+            <td class="r mono">34,40 – 96,33 Kč</td>
+          </tr>
+          <tr data-cat="Obleky-na-míru">
+            <td>pánský oblek na míru Praha</td>
+            <td class="kw-cat-label">Obleky na míru</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Obleky-na-míru">
+            <td>pánské obleky na míru Praha</td>
+            <td class="kw-cat-label">Obleky na míru</td>
+            <td class="r mono">10</td>
+            <td><span class="badge bh">Vysoká</span></td>
+            <td class="r mono">48,74 – 245,00 Kč</td>
+          </tr>
+          <tr data-cat="Obleky-na-míru">
+            <td>obleky na míru Praha</td>
+            <td class="kw-cat-label">Obleky na míru</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Obleky-na-míru">
+            <td>šití obleků Praha</td>
+            <td class="kw-cat-label">Obleky na míru</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Obleky-na-míru">
+            <td>luxusní oblek na míru</td>
+            <td class="kw-cat-label">Obleky na míru</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Obleky-na-míru">
+            <td>luxusní pánský oblek</td>
+            <td class="kw-cat-label">Obleky na míru</td>
+            <td class="r mono">10</td>
+            <td><span class="badge bh">Vysoká</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Obleky-na-míru">
+            <td>luxusní pánské obleky</td>
+            <td class="kw-cat-label">Obleky na míru</td>
+            <td class="r mono">110</td>
+            <td><span class="badge bh">Vysoká</span></td>
+            <td class="r mono">6,58 – 41,40 Kč</td>
+          </tr>
+          <tr data-cat="Obleky-na-míru">
+            <td>business oblek na míru</td>
+            <td class="kw-cat-label">Obleky na míru</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Obleky-na-míru">
+            <td>business oblek Praha</td>
+            <td class="kw-cat-label">Obleky na míru</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Obleky-na-míru">
+            <td>společenský oblek na míru</td>
+            <td class="kw-cat-label">Obleky na míru</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Obleky-na-míru">
+            <td>společenský oblek Praha</td>
+            <td class="kw-cat-label">Obleky na míru</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Krejčovství">
+            <td>krejčovství Praha</td>
+            <td class="kw-cat-label">Krejčovství</td>
+            <td class="r mono">320</td>
+            <td><span class="badge bm">Střední</span></td>
+            <td class="r mono">8,23 – 20,51 Kč</td>
+          </tr>
+          <tr data-cat="Krejčovství">
+            <td>pánské krejčovství Praha</td>
+            <td class="kw-cat-label">Krejčovství</td>
+            <td class="r mono">30</td>
+            <td><span class="badge bh">Vysoká</span></td>
+            <td class="r mono">13,82 – 34,04 Kč</td>
+          </tr>
+          <tr data-cat="Krejčovství">
+            <td>pánské krejčovství</td>
+            <td class="kw-cat-label">Krejčovství</td>
+            <td class="r mono">30</td>
+            <td><span class="badge bl">Nízká</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Krejčovství">
+            <td>krejčovství na míru</td>
+            <td class="kw-cat-label">Krejčovství</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Krejčovství">
+            <td>krejčovství na míru Praha</td>
+            <td class="kw-cat-label">Krejčovství</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Krejčovství">
+            <td>luxusní krejčovství Praha</td>
+            <td class="kw-cat-label">Krejčovství</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Krejčovství">
+            <td>zakázkové krejčovství Praha</td>
+            <td class="kw-cat-label">Krejčovství</td>
+            <td class="r mono">40</td>
+            <td><span class="badge bh">Vysoká</span></td>
+            <td class="r mono">10,66 – 25,75 Kč</td>
+          </tr>
+          <tr data-cat="Krejčovství">
+            <td>pánský krejčí</td>
+            <td class="kw-cat-label">Krejčovství</td>
+            <td class="r mono">20</td>
+            <td><span class="badge bm">Střední</span></td>
+            <td class="r mono">9,80 – 18,78 Kč</td>
+          </tr>
+          <tr data-cat="Krejčovství">
+            <td>pánský krejčí Praha</td>
+            <td class="kw-cat-label">Krejčovství</td>
+            <td class="r mono">10</td>
+            <td><span class="badge bh">Vysoká</span></td>
+            <td class="r mono">8,89 – 24,33 Kč</td>
+          </tr>
+          <tr data-cat="Krejčovství">
+            <td>osobní krejčí</td>
+            <td class="kw-cat-label">Krejčovství</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Krejčovství">
+            <td>osobní krejčí Praha</td>
+            <td class="kw-cat-label">Krejčovství</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Krejčovství">
+            <td>bespoke krejčovství</td>
+            <td class="kw-cat-label">Krejčovství</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Krejčovství">
+            <td>bespoke tailoring Praha</td>
+            <td class="kw-cat-label">Krejčovství</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Smoking-a-Black-Tie">
+            <td>bespoke suit Prague</td>
+            <td class="kw-cat-label">Smoking & Black Tie</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Smoking-a-Black-Tie">
+            <td>bespoke tailor Prague</td>
+            <td class="kw-cat-label">Smoking & Black Tie</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Smoking-a-Black-Tie">
+            <td>custom suit Prague</td>
+            <td class="kw-cat-label">Smoking & Black Tie</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Smoking-a-Black-Tie">
+            <td>tailor made suit Prague</td>
+            <td class="kw-cat-label">Smoking & Black Tie</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Smoking-a-Black-Tie">
+            <td>smoking na míru</td>
+            <td class="kw-cat-label">Smoking & Black Tie</td>
+            <td class="r mono">10</td>
+            <td><span class="badge bh">Vysoká</span></td>
+            <td class="r mono">19,58 – 48,55 Kč</td>
+          </tr>
+          <tr data-cat="Smoking-a-Black-Tie">
+            <td>smoking na míru Praha</td>
+            <td class="kw-cat-label">Smoking & Black Tie</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Smoking-a-Black-Tie">
+            <td>pánský smoking na míru</td>
+            <td class="kw-cat-label">Smoking & Black Tie</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Smoking-a-Black-Tie">
+            <td>pánský smoking</td>
+            <td class="kw-cat-label">Smoking & Black Tie</td>
+            <td class="r mono">140</td>
+            <td><span class="badge bh">Vysoká</span></td>
+            <td class="r mono">7,28 – 27,64 Kč</td>
+          </tr>
+          <tr data-cat="Smoking-a-Black-Tie">
+            <td>smoking Praha</td>
+            <td class="kw-cat-label">Smoking & Black Tie</td>
+            <td class="r mono">40</td>
+            <td><span class="badge bm">Střední</span></td>
+            <td class="r mono">18,89 – 85,80 Kč</td>
+          </tr>
+          <tr data-cat="Smoking-a-Black-Tie">
+            <td>pánský smoking Praha</td>
+            <td class="kw-cat-label">Smoking & Black Tie</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Smoking-a-Black-Tie">
+            <td>šití smokingu na míru</td>
+            <td class="kw-cat-label">Smoking & Black Tie</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Smoking-a-Black-Tie">
+            <td>luxusní smoking</td>
+            <td class="kw-cat-label">Smoking & Black Tie</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Smoking-a-Black-Tie">
+            <td>luxusní smoking Praha</td>
+            <td class="kw-cat-label">Smoking & Black Tie</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Smoking-a-Black-Tie">
+            <td>smoking black tie</td>
+            <td class="kw-cat-label">Smoking & Black Tie</td>
+            <td class="r mono">10</td>
+            <td><span class="badge bh">Vysoká</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Smoking-a-Black-Tie">
+            <td>black tie oblek</td>
+            <td class="kw-cat-label">Smoking & Black Tie</td>
+            <td class="r mono">10</td>
+            <td><span class="badge bh">Vysoká</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Smoking-a-Black-Tie">
+            <td>oblek black tie</td>
+            <td class="kw-cat-label">Smoking & Black Tie</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Smoking-a-Black-Tie">
+            <td>black tie oblečení muž</td>
+            <td class="kw-cat-label">Smoking & Black Tie</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Smoking-a-Black-Tie">
+            <td>black tie Praha</td>
+            <td class="kw-cat-label">Smoking & Black Tie</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Smoking-a-Black-Tie">
+            <td>smoking na ples</td>
+            <td class="kw-cat-label">Smoking & Black Tie</td>
+            <td class="r mono">10</td>
+            <td><span class="badge bl">Nízká</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Smoking-a-Black-Tie">
+            <td>smoking na svatbu</td>
+            <td class="kw-cat-label">Smoking & Black Tie</td>
+            <td class="r mono">20</td>
+            <td><span class="badge bh">Vysoká</span></td>
+            <td class="r mono">12,31 – 51,24 Kč</td>
+          </tr>
+          <tr data-cat="Smoking-a-Black-Tie">
+            <td>smoking na gala večer</td>
+            <td class="kw-cat-label">Smoking & Black Tie</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Smoking-a-Black-Tie">
+            <td>smoking na večírek</td>
+            <td class="kw-cat-label">Smoking & Black Tie</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Svatební">
+            <td>svatební oblek na míru</td>
+            <td class="kw-cat-label">Svatební</td>
+            <td class="r mono">10</td>
+            <td><span class="badge bm">Střední</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Svatební">
+            <td>svatební oblek Praha</td>
+            <td class="kw-cat-label">Svatební</td>
+            <td class="r mono">20</td>
+            <td><span class="badge bh">Vysoká</span></td>
+            <td class="r mono">46,45 – 177,99 Kč</td>
+          </tr>
+          <tr data-cat="Svatební">
+            <td>pánský svatební oblek</td>
+            <td class="kw-cat-label">Svatební</td>
+            <td class="r mono">210</td>
+            <td><span class="badge bh">Vysoká</span></td>
+            <td class="r mono">17,53 – 48,61 Kč</td>
+          </tr>
+          <tr data-cat="Svatební">
+            <td>pánský svatební oblek Praha</td>
+            <td class="kw-cat-label">Svatební</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Svatební">
+            <td>oblek pro ženicha</td>
+            <td class="kw-cat-label">Svatební</td>
+            <td class="r mono">110</td>
+            <td><span class="badge bh">Vysoká</span></td>
+            <td class="r mono">8,33 – 47,86 Kč</td>
+          </tr>
+          <tr data-cat="Svatební">
+            <td>oblek pro ženicha na míru</td>
+            <td class="kw-cat-label">Svatební</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Svatební">
+            <td>oblek pro ženicha Praha</td>
+            <td class="kw-cat-label">Svatební</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Svatební">
+            <td>oblek na svatbu muž</td>
+            <td class="kw-cat-label">Svatební</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Svatební">
+            <td>oblek na svatbu na míru</td>
+            <td class="kw-cat-label">Svatební</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Svatební">
+            <td>oblek na svatbu Praha</td>
+            <td class="kw-cat-label">Svatební</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Svatební">
+            <td>luxusní svatební oblek</td>
+            <td class="kw-cat-label">Svatební</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Svatební">
+            <td>pánský oblek na svatbu</td>
+            <td class="kw-cat-label">Svatební</td>
+            <td class="r mono">320</td>
+            <td><span class="badge bh">Vysoká</span></td>
+            <td class="r mono">9,08 – 45,15 Kč</td>
+          </tr>
+          <tr data-cat="Svatební">
+            <td>svatební krejčovství Praha</td>
+            <td class="kw-cat-label">Svatební</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Kabáty-a-Džíny-na-míru">
+            <td>kabát na míru</td>
+            <td class="kw-cat-label">Kabáty & Džíny na míru</td>
+            <td class="r mono">40</td>
+            <td><span class="badge bh">Vysoká</span></td>
+            <td class="r mono">12,47 – 29,20 Kč</td>
+          </tr>
+          <tr data-cat="Kabáty-a-Džíny-na-míru">
+            <td>pánský kabát na míru</td>
+            <td class="kw-cat-label">Kabáty & Džíny na míru</td>
+            <td class="r mono">10</td>
+            <td><span class="badge bh">Vysoká</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Kabáty-a-Džíny-na-míru">
+            <td>kabát na míru Praha</td>
+            <td class="kw-cat-label">Kabáty & Džíny na míru</td>
+            <td class="r mono">10</td>
+            <td><span class="badge bh">Vysoká</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Kabáty-a-Džíny-na-míru">
+            <td>pánský kabát na míru Praha</td>
+            <td class="kw-cat-label">Kabáty & Džíny na míru</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Kabáty-a-Džíny-na-míru">
+            <td>šití kabátu na míru</td>
+            <td class="kw-cat-label">Kabáty & Džíny na míru</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Kabáty-a-Džíny-na-míru">
+            <td>luxusní pánský kabát</td>
+            <td class="kw-cat-label">Kabáty & Džíny na míru</td>
+            <td class="r mono">10</td>
+            <td><span class="badge bh">Vysoká</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Kabáty-a-Džíny-na-míru">
+            <td>kašmírový kabát na míru</td>
+            <td class="kw-cat-label">Kabáty & Džíny na míru</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Kabáty-a-Džíny-na-míru">
+            <td>vlněný kabát na míru</td>
+            <td class="kw-cat-label">Kabáty & Džíny na míru</td>
+            <td class="r mono">10</td>
+            <td><span class="badge bh">Vysoká</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Kabáty-a-Džíny-na-míru">
+            <td>džíny na míru</td>
+            <td class="kw-cat-label">Kabáty & Džíny na míru</td>
+            <td class="r mono">50</td>
+            <td><span class="badge bh">Vysoká</span></td>
+            <td class="r mono">7,10 – 12,65 Kč</td>
+          </tr>
+          <tr data-cat="Kabáty-a-Džíny-na-míru">
+            <td>pánské džíny na míru</td>
+            <td class="kw-cat-label">Kabáty & Džíny na míru</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Kabáty-a-Džíny-na-míru">
+            <td>džíny na míru Praha</td>
+            <td class="kw-cat-label">Kabáty & Džíny na míru</td>
+            <td class="r mono">10</td>
+            <td><span class="badge bm">Střední</span></td>
+            <td class="r mono">7,78 – 33,75 Kč</td>
+          </tr>
+          <tr data-cat="Kabáty-a-Džíny-na-míru">
+            <td>pánské džíny na míru Praha</td>
+            <td class="kw-cat-label">Kabáty & Džíny na míru</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Kabáty-a-Džíny-na-míru">
+            <td>jeans na míru</td>
+            <td class="kw-cat-label">Kabáty & Džíny na míru</td>
+            <td class="r mono">10</td>
+            <td><span class="badge bh">Vysoká</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Kabáty-a-Džíny-na-míru">
+            <td>prémiové džíny na míru</td>
+            <td class="kw-cat-label">Kabáty & Džíny na míru</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Obuv-na-míru">
+            <td>pánské boty na míru</td>
+            <td class="kw-cat-label">Obuv na míru</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Obuv-na-míru">
+            <td>boty na míru Praha</td>
+            <td class="kw-cat-label">Obuv na míru</td>
+            <td class="r mono">30</td>
+            <td><span class="badge bm">Střední</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Obuv-na-míru">
+            <td>pánské boty na míru Praha</td>
+            <td class="kw-cat-label">Obuv na míru</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Obuv-na-míru">
+            <td>obuv na míru</td>
+            <td class="kw-cat-label">Obuv na míru</td>
+            <td class="r mono">30</td>
+            <td><span class="badge bh">Vysoká</span></td>
+            <td class="r mono">3,06 – 7,75 Kč</td>
+          </tr>
+          <tr data-cat="Obuv-na-míru">
+            <td>pánská obuv na míru</td>
+            <td class="kw-cat-label">Obuv na míru</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Oblečení">
+            <td>bunda na míru</td>
+            <td class="kw-cat-label">Oblečení</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Oblečení">
+            <td>pánská bunda na míru</td>
+            <td class="kw-cat-label">Oblečení</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Oblečení">
+            <td>bunda na míru Praha</td>
+            <td class="kw-cat-label">Oblečení</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Oblečení">
+            <td>pánské oblečení na míru Praha</td>
+            <td class="kw-cat-label">Oblečení</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Oblečení">
+            <td>casual oblečení na míru</td>
+            <td class="kw-cat-label">Oblečení</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Oblečení">
+            <td>pánské casual oblečení na míru</td>
+            <td class="kw-cat-label">Oblečení</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Oblečení">
+            <td>smart casual na míru</td>
+            <td class="kw-cat-label">Oblečení</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Oblečení">
+            <td>sportovní oblečení na míru</td>
+            <td class="kw-cat-label">Oblečení</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Oblečení">
+            <td>pánská móda na míru</td>
+            <td class="kw-cat-label">Oblečení</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Oblečení">
+            <td>luxusní pánská móda</td>
+            <td class="kw-cat-label">Oblečení</td>
+            <td class="r mono">10</td>
+            <td><span class="badge bh">Vysoká</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Oblečení">
+            <td>luxusní pánská móda Praha</td>
+            <td class="kw-cat-label">Oblečení</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Styling">
+            <td>osobní styling</td>
+            <td class="kw-cat-label">Styling</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Styling">
+            <td>osobní styling muž</td>
+            <td class="kw-cat-label">Styling</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Styling">
+            <td>osobní styling pro muže</td>
+            <td class="kw-cat-label">Styling</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Styling">
+            <td>osobní styling Praha</td>
+            <td class="kw-cat-label">Styling</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Styling">
+            <td>pánský stylista</td>
+            <td class="kw-cat-label">Styling</td>
+            <td class="r mono">10</td>
+            <td><span class="badge bm">Střední</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Styling">
+            <td>pánský stylista Praha</td>
+            <td class="kw-cat-label">Styling</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Styling">
+            <td>osobní stylista muž</td>
+            <td class="kw-cat-label">Styling</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Styling">
+            <td>osobní stylista Praha</td>
+            <td class="kw-cat-label">Styling</td>
+            <td class="r mono">10</td>
+            <td><span class="badge bm">Střední</span></td>
+            <td class="r mono">5,24 – 24,17 Kč</td>
+          </tr>
+          <tr data-cat="Styling">
+            <td>image konzultace muž</td>
+            <td class="kw-cat-label">Styling</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Styling">
+            <td>business styling</td>
+            <td class="kw-cat-label">Styling</td>
+            <td class="r mono">110</td>
+            <td><span class="badge bh">Vysoká</span></td>
+            <td class="r mono">8,90 – 95,48 Kč</td>
+          </tr>
+          <tr data-cat="Styling">
+            <td>business styling muž</td>
+            <td class="kw-cat-label">Styling</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Styling">
+            <td>business styling Praha</td>
+            <td class="kw-cat-label">Styling</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Styling">
+            <td>business dress code konzultace</td>
+            <td class="kw-cat-label">Styling</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Styling">
+            <td>pánský styling</td>
+            <td class="kw-cat-label">Styling</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Styling">
+            <td>pánský styling Praha</td>
+            <td class="kw-cat-label">Styling</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Styling">
+            <td>smart šatník</td>
+            <td class="kw-cat-label">Styling</td>
+            <td class="r mono">10</td>
+            <td><span class="badge bl">Nízká</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Styling">
+            <td>smart šatník na míru</td>
+            <td class="kw-cat-label">Styling</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Styling">
+            <td>pánský šatník na míru</td>
+            <td class="kw-cat-label">Styling</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Styling">
+            <td>šatník na míru</td>
+            <td class="kw-cat-label">Styling</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Styling">
+            <td>audit šatníku</td>
+            <td class="kw-cat-label">Styling</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Styling">
+            <td>revize šatníku</td>
+            <td class="kw-cat-label">Styling</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Styling">
+            <td>revize šatníku muž</td>
+            <td class="kw-cat-label">Styling</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Styling">
+            <td>osobní nákupčí oblečení muž</td>
+            <td class="kw-cat-label">Styling</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Brand">
+            <td>bespoke fashion</td>
+            <td class="kw-cat-label">Brand</td>
+            <td class="r mono">140</td>
+            <td><span class="badge bl">Nízká</span></td>
+            <td class="r mono">1,78 – 14,08 Kč</td>
+          </tr>
+          <tr data-cat="Brand">
+            <td>bespoke fashion Praha</td>
+            <td class="kw-cat-label">Brand</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Brand">
+            <td>bespoke Praha</td>
+            <td class="kw-cat-label">Brand</td>
+            <td class="r mono">10</td>
+            <td><span class="badge bm">Střední</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Brand">
+            <td>Monika Černá</td>
+            <td class="kw-cat-label">Brand</td>
+            <td class="r mono">90</td>
+            <td><span class="badge bl">Nízká</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Brand">
+            <td>Monika Černá móda</td>
+            <td class="kw-cat-label">Brand</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Brand">
+            <td>Michal Váňa</td>
+            <td class="kw-cat-label">Brand</td>
+            <td class="r mono">40</td>
+            <td><span class="badge bl">Nízká</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Brand">
+            <td>Michal Váňa krejčí</td>
+            <td class="kw-cat-label">Brand</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Brand">
+            <td>Bespoke Fashion obleky</td>
+            <td class="kw-cat-label">Brand</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+          <tr data-cat="Brand">
+            <td>Bespoke Fashion smoking</td>
+            <td class="kw-cat-label">Brand</td>
+            <td class="r mono txt3">—</td>
+            <td><span class="badge">—</span></td>
+            <td class="r mono txt3">—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="kw-count" id="kw-count">Zobrazeno: 131 klíčových slov</div>
+  </section>
+
+</main>
+
+<script>
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.tab;
+      document.querySelectorAll('.tab-btn').forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+      document.getElementById('tab-' + target).classList.add('active');
+    });
+  });
+
+  // Keyword filter
+  document.querySelectorAll('.kf-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.kf-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      const rows = document.querySelectorAll('#kw-table tbody tr');
+      let visible = 0;
+      rows.forEach(row => {
+        if (filter === 'vše' || row.dataset.cat === filter) {
+          row.classList.remove('hidden');
+          visible++;
+        } else {
+          row.classList.add('hidden');
+        }
+      });
+      const countEl = document.getElementById('kw-count');
+      if (countEl) countEl.textContent = 'Zobrazeno: ' + visible + ' klíčových slov';
+    });
+  });
+
+  </script>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span class="footer-name">Miriam Nováková</span>
+    <span class="footer-sep">·</span>
+    <a class="footer-link" href="mailto:mino.ppc@gmail.com">mino.ppc@gmail.com</a>
+    <span class="footer-sep">·</span>
+    <a class="footer-link" href="tel:+420737000753">+420 737 000 753</a>
+  </div>
+</footer>
